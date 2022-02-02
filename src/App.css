@@ -1,3 +1,31 @@
+.navbar {
+  background-color: #cccae8;
+  color: white;
+  text-decoration: none;
+  box-shadow: 0px 8px 10px grey;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+}
+
+.navbar-link:hover {
+  color: #789c8e;
+}
+
+.nav-li {
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+  margin: 3px;
+}
+
+.nav-li:hover {
+  color: #789c8e;
+}
+
 .App {
   text-align: center;
 }

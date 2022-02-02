@@ -2,13 +2,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const Navbar = () => {
   return (
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          Navbar
+    <nav className="navbar navbar-expand-lg navbar-light">
+      <div className="container-fluid">
+        <a className="navbar-link" href="#">
+          Medusa Box
         </a>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -16,27 +16,24 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">
-                Home
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a className="nav-li" aria-current="page" href="#">
+                Cajas Mensuales
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Features
+            <li>
+              <a className="nav-li" href="#">
+                Cajas Temáticas
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Pricing
+            <li className="nav-item">
+              <a className="nav-li" href="#">
+                Cajas Deluxe
               </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
             </li>
           </ul>
         </div>

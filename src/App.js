@@ -9,6 +9,7 @@ function App() {
       <h1>Este es el título</h1>
       <h2>Este es el subtítulo</h2>
       <p>Aquí irá una USP</p>
+      <footer></footer>
     </>
   );
 }

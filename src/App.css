@@ -26,6 +26,15 @@
   color: #789c8e;
 }
 
+.cart-vector {
+  width: 30px;
+  margin: 5px;
+}
+
+.cart-container {
+  padding: 10px;
+}
+
 .App {
   text-align: center;
 }

@@ -27,12 +27,33 @@
 }
 
 .cart-vector {
-  width: 30px;
-  margin: 5px;
+  width: 70px;
+  height: 60px;
+  margin: 0px;
 }
 
 .cart-container {
   padding: 10px;
+}
+
+.div-item-count {
+  box-shadow: 0px 4px 10px grey;
+  border-radius: 5px;
+  display: inline;
+  padding: 10px;
+}
+
+.button-item-count {
+  border: none;
+  border-radius: 5px;
+  background-color: #ffaae3;
+  color: white;
+  width: 50px;
+  margin: 5px;
+}
+
+.number-item-count {
+  display: inline;
 }
 
 .App {

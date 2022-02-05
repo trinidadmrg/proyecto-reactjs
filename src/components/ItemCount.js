@@ -4,11 +4,19 @@ const ItemCount = () => {
   const [cantidad, setCantidad] = useState(0);
 
   const increment = () => {
-    setCantidad(cantidad + 1);
+    if (cantidad >= 5) {
+      alert("Has alcanzado el límite de stock de este producto");
+    } else {
+      setCantidad(cantidad + 1);
+    }
   };
 
   const decrecent = () => {
-    setCantidad(cantidad - 1);
+    if (cantidad <= 0) {
+      alert("No tienes ningún producto en el carrito");
+    } else {
+      setCantidad(cantidad - 1);
+    }
   };
 
   return (

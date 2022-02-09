@@ -8,7 +8,6 @@ const ItemCount = ({ stock, initial, onAdd }) => {
       alert("Has alcanzado el límite de stock de este producto");
     } else {
       setQuantity(quantity + 1);
-      onAdd(quantity + 1);
     }
   };
 
@@ -21,13 +20,23 @@ const ItemCount = ({ stock, initial, onAdd }) => {
   };
 
   return (
-    <div className="div-item-count">
-      <button className="button-item-count" onClick={increment}>
-        +
-      </button>
-      <p className="number-item-count">{quantity}</p>
-      <button className="button-item-count" onClick={decrement}>
-        -
+    <div className="div-select">
+      <div className="div-item-count">
+        <button className="button-item-count" onClick={increment}>
+          +
+        </button>
+        <p className="number-item-count">{quantity}</p>
+        <button className="button-item-count" onClick={decrement}>
+          -
+        </button>
+      </div>
+      <button
+        className="add-to-chart"
+        onClick={() => {
+          onAdd(quantity);
+        }}
+      >
+        Agregar al carrito
       </button>
     </div>
   );

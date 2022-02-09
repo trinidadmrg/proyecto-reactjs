@@ -94,3 +94,33 @@
     transform: rotate(360deg);
   }
 }
+
+.product-card {
+  width: 270px;
+  margin: 30px;
+  box-shadow: 0px 4px 10px grey;
+  border-radius: 5px;
+}
+
+.product-title {
+  text-align: center;
+  font-size: 30px;
+  color: #8d85ff;
+}
+
+.product-price {
+  text-align: center;
+  font-size: 20px;
+  color: #e580ff;
+}
+
+.product-image {
+  width: 100%;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}

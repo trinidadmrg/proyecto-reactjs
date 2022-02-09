@@ -11,7 +11,9 @@ function App() {
   return (
     <>
       <Navbar />
-      <ItemListContainer greeting="Aquí iran los Items!" />
+      <div className="list-container">
+        <ItemListContainer />
+      </div>
       <ItemCount stock={5} initial={0} onAdd={onAdd} />
       <footer></footer>
     </>

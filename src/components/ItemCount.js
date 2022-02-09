@@ -1,21 +1,22 @@
 import { useState } from "react";
 
-const ItemCount = () => {
-  const [cantidad, setCantidad] = useState(0);
+const ItemCount = ({ stock, initial, onAdd }) => {
+  const [quantity, setQuantity] = useState(initial);
 
   const increment = () => {
-    if (cantidad >= 5) {
+    if (quantity >= stock) {
       alert("Has alcanzado el límite de stock de este producto");
     } else {
-      setCantidad(cantidad + 1);
+      setQuantity(quantity + 1);
+      onAdd(quantity + 1);
     }
   };
 
-  const decrecent = () => {
-    if (cantidad <= 0) {
+  const decrement = () => {
+    if (quantity <= initial) {
       alert("No tienes ningún producto en el carrito");
     } else {
-      setCantidad(cantidad - 1);
+      setQuantity(quantity - 1);
     }
   };
 
@@ -24,8 +25,8 @@ const ItemCount = () => {
       <button className="button-item-count" onClick={increment}>
         +
       </button>
-      <p className="number-item-count">{cantidad}</p>
-      <button className="button-item-count" onClick={decrecent}>
+      <p className="number-item-count">{quantity}</p>
+      <button className="button-item-count" onClick={decrement}>
         -
       </button>
     </div>

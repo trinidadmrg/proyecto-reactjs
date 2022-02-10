@@ -1,20 +1,17 @@
 import "./App.css";
 import ItemCount from "./components/ItemCount";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemListContainer from "./components/ItemListContainer";
 import Navbar from "./components/Navbar";
 
 function App() {
-  function onAdd(count) {
-    alert(count);
-  }
-
   return (
     <>
       <Navbar />
-      <div className="list-container">
+      {/*       <div className="list-container">
         <ItemListContainer />
-      </div>
-      <ItemCount stock={5} initial={0} onAdd={onAdd} />
+      </div> */}
+      <ItemDetailContainer />
       <footer></footer>
     </>
   );

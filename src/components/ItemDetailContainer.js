@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { productList, getList } from "../productList";
-import ItemList from "./ItemList";
+import ItemDetail from "./ItemDetail";
 
-export default function ItemListContainer() {
-  const [items, setItems] = useState([]);
+const ItemDetailContainer = () => {
+  const [dato, setDato] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(async () => {
     setLoading(true);
     try {
-      const data = await getList(productList, 2000);
-      setItems(data);
+      const info = await getList(productList[1], 2000);
+      setDato(info);
     } catch (e) {}
     setLoading(false);
   }, []);
@@ -18,6 +18,8 @@ export default function ItemListContainer() {
   return loading === true ? (
     <p className="loading">Estamos cargando los productos, un momento...</p>
   ) : (
-    <ItemList lista={items} />
+    <ItemDetail item={dato} />
   );
-}
+};
+
+export default ItemDetailContainer;

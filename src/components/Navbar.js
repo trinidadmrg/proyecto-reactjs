@@ -1,13 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
+import logo from "../img/logo.png";
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
       <div className="container-fluid">
-        <a className="navbar-link" href="#">
-          Medusa Box
-        </a>
+        <Link className="navbar-link" to="/">
+          <img className="logo" src={logo} alt="logo"></img>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -19,23 +21,17 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        <div className="collapse navbar-collapse center" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item">
-              <a className="nav-li" aria-current="page" href="#">
-                Cajas Mensuales
-              </a>
-            </li>
-            <li>
-              <a className="nav-li" href="#">
-                Cajas Temáticas
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-li" href="#">
-                Cajas Deluxe
-              </a>
-            </li>
+            <Link className="nav-item nav-li" to="/category/1">
+              <li>Cajas Temáticas</li>
+            </Link>
+            <Link className="nav-item nav-li" to="/category/2">
+              <li>Cajas Deluxe</li>
+            </Link>
+            <Link className="nav-item nav-li" to="/category/3">
+              <li>Cajas Mensuales</li>
+            </Link>
           </ul>
         </div>
       </div>

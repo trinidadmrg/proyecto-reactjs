@@ -1,25 +1,24 @@
 import { useEffect, useState } from "react";
-import { productList, getList } from "../productList";
+import { useParams } from "react-router-dom";
+import customFetch from "../utils/customFetch";
+import { productList, getList } from "../utils/productList";
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {
   const [dato, setDato] = useState([]);
-  const [loading, setLoading] = useState(false);
+  /*   const [loading, setLoading] = useState(false);
+   */ const { idItem } = useParams();
 
-  useEffect(async () => {
-    setLoading(true);
-    try {
-      const info = await getList(productList[1], 2000);
-      setDato(info);
-    } catch (e) {}
-    setLoading(false);
+  useEffect(() => {
+    customFetch(
+      2000,
+      productList.find((item) => item.id === parseInt(idItem))
+    )
+      .then((result) => setDato(result))
+      .catch((err) => console.log(err));
   }, []);
 
-  return loading === true ? (
-    <p className="loading">Estamos cargando los productos, un momento...</p>
-  ) : (
-    <ItemDetail item={dato} />
-  );
+  return <ItemDetail item={dato} />;
 };
 
 export default ItemDetailContainer;

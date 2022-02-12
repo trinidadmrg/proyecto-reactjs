@@ -1,23 +1,24 @@
-import { useEffect, useState } from "react";
-import { productList, getList } from "../productList";
 import ItemList from "./ItemList";
+import customFetch from "../utils/customFetch";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+const { productList } = require("../utils/productList");
 
 export default function ItemListContainer() {
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [datos, setDatos] = useState([]);
+  const { idCategory } = useParams();
 
-  useEffect(async () => {
-    setLoading(true);
-    try {
-      const data = await getList(productList, 2000);
-      setItems(data);
-    } catch (e) {}
-    setLoading(false);
-  }, []);
+  useEffect(() => {
+    customFetch(
+      1000,
+      productList.filter((item) => {
+        if (idCategory === undefined) return item;
+        return item.category === parseInt(idCategory);
+      })
+    )
+      .then((result) => setDatos(result))
+      .catch((err) => console.log(err));
+  }, [datos]);
 
-  return loading === true ? (
-    <p className="loading">Estamos cargando los productos, un momento...</p>
-  ) : (
-    <ItemList lista={items} />
-  );
+  return <ItemList items={datos} />;
 }

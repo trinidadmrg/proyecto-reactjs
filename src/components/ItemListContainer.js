@@ -7,8 +7,10 @@ const { productList } = require("../utils/productList");
 export default function ItemListContainer() {
   const [datos, setDatos] = useState([]);
   const { idCategory } = useParams();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     customFetch(
       1000,
       productList.filter((item) => {
@@ -17,8 +19,13 @@ export default function ItemListContainer() {
       })
     )
       .then((result) => setDatos(result))
-      .catch((err) => console.log(err));
-  }, [datos]);
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
+  }, [idCategory]);
 
-  return <ItemList items={datos} />;
+  return loading === true ? (
+    <p className="loading">Estamos cargando los productos, un momento...</p>
+  ) : (
+    <ItemList items={datos} />
+  );
 }

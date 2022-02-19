@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import customFetch from "../utils/customFetch";
-import { productList, getList } from "../utils/productList";
+import { productList } from "../utils/productList";
 import ItemDetail from "./ItemDetail";
 
 const ItemDetailContainer = () => {

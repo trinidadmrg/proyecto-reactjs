@@ -1,10 +1,10 @@
 import "./styles/App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ItemCount from "./components/ItemCount";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import ItemListContainer from "./components/ItemListContainer";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import Cart from "./components/Cart";
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
           }
         />
         <Route path="/item/:idItem" element={<ItemDetailContainer />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
       <Footer />
     </BrowserRouter>

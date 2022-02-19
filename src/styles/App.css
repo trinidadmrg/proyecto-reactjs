@@ -49,6 +49,26 @@
   padding: 10px;
 }
 
+.cart-button {
+  border: none;
+  border-radius: 5px;
+  background-color: #ffaae3;
+  color: white;
+  width: 200px;
+  height: 50px;
+  margin: 5px;
+  align-self: center;
+  border-color: #ffaae3;
+  border: solid;
+}
+
+.cart-button:hover {
+  background-color: white;
+  color: #ffaae3;
+  border-color: #ffaae3;
+  border: solid;
+}
+
 .div-select {
   display: flex;
   flex-direction: column;
@@ -197,18 +217,21 @@
   border-radius: 5px;
   margin: 0 auto;
   margin-top: 30px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: row;
 }
 
 .details-image {
   width: 50%;
+  border-radius: 5px;
 }
 
 .details-texts {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 40px;
 }
 
 .details-title {

@@ -18,7 +18,7 @@ const ItemDetailContainer = () => {
       .then((result) => setDato(result))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
-  }, []);
+  }, [dato]);
 
   return loading === true ? (
     <p className="loading">Estamos cargando los productos, un momento...</p>

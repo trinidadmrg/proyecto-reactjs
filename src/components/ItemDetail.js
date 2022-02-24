@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import ItemCount from "./ItemCount";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
+import FormatNumber from "../utils/FormatNumber";
 
 const ItemDetail = ({ item }) => {
   const [itemCount, setItemCount] = useState(0);
@@ -21,7 +22,10 @@ const ItemDetail = ({ item }) => {
           <div className="details-texts">
             <p className="details-title">{item.title}</p>
             <p className="details-description">{item.description}</p>
-            <p className="details-price">{item.price}</p>
+
+            <p className="details-price">
+              <FormatNumber number={item.price} />{" "}
+            </p>
             {itemCount === 0 ? (
               <ItemCount stock={item.stock} initial={itemCount} onAdd={onAdd} />
             ) : (

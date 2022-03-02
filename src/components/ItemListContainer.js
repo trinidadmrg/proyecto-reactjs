@@ -1,23 +1,23 @@
 import ItemList from "./ItemList";
-import customFetch from "../utils/customFetch";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-const { productList } = require("../utils/productList");
+import db from "../utils/firebaseConfig";
+import { collection, getDocs } from "firebase/firestore";
 
 export default function ItemListContainer() {
   const [datos, setDatos] = useState([]);
   const { idCategory } = useParams();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    customFetch(
-      1000,
-      productList.filter((item) => {
-        if (idCategory === undefined) return item;
-        return item.category === parseInt(idCategory);
-      })
-    )
+    const firestoreFetch = async () => {
+      const querySnapshot = await getDocs(collection(db, "items"));
+      return querySnapshot.docs.map((document) => ({
+        id: document.id,
+        ...document.data(),
+      }));
+    };
+    firestoreFetch()
       .then((result) => setDatos(result))
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));

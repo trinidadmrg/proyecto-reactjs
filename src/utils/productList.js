@@ -1,4 +1,4 @@
-import imagenes from "../img/images";
+/* import imagenes from "../img/images";
 
 export const productList = [
   {
@@ -217,3 +217,4 @@ export const getList = (data, timeout) =>
       res(data);
     }, timeout)
   );
+ */

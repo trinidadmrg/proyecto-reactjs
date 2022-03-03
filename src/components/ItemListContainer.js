@@ -1,8 +1,7 @@
 import ItemList from "./ItemList";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import db from "../utils/firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { firestoreFetch } from "../utils/firestoreFetch";
 
 export default function ItemListContainer() {
   const [datos, setDatos] = useState([]);
@@ -10,15 +9,12 @@ export default function ItemListContainer() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const firestoreFetch = async () => {
-      const querySnapshot = await getDocs(collection(db, "items"));
-      return querySnapshot.docs.map((document) => ({
-        id: document.id,
-        ...document.data(),
-      }));
-    };
-    firestoreFetch()
-      .then((result) => setDatos(result))
+    setLoading(true);
+
+    firestoreFetch(parseInt(idCategory))
+      .then((result) => {
+        setDatos(result);
+      })
       .catch((err) => console.log(err))
       .finally(() => setLoading(false));
   }, [idCategory]);

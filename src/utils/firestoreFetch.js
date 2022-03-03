@@ -11,12 +11,9 @@ import db from "./firebaseConfig";
 export const firestoreFetch = async (idCategory) => {
   let q;
   if (idCategory) {
-    q = query(
-      collection(db, "products"),
-      where("categoryId", "==", idCategory)
-    );
+    q = query(collection(db, "items"), where("category", "==", idCategory));
   } else {
-    q = query(collection(db, "products"), orderBy("name"));
+    q = query(collection(db, "items"), orderBy("title"));
   }
   const querySnapshot = await getDocs(q);
   const dataFromFirestore = querySnapshot.docs.map((document) => ({
@@ -27,7 +24,7 @@ export const firestoreFetch = async (idCategory) => {
 };
 
 export const firestoreFetchOne = async (idItem) => {
-  const docRef = doc(db, "products", idItem);
+  const docRef = doc(db, "items", idItem);
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists()) {

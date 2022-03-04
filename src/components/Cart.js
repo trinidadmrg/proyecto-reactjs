@@ -3,8 +3,66 @@ import { useContext } from "react";
 import { CartContext } from "./CartContext";
 import FormatNumber from "../utils/FormatNumber";
 
+/* Firebase Imports*/
+
+import {
+  collection,
+  doc,
+  setDoc,
+  serverTimestamp,
+  updateDoc,
+  increment,
+} from "firebase/firestore";
+import db from "../utils/firebaseConfig";
+
 const Cart = () => {
   const test = useContext(CartContext);
+
+  const createOrder = () => {
+    const itemsForDB = test.cartList.map((item) => ({
+      id: item.idItem,
+      title: item.nameItem,
+      price: item.costItem,
+    }));
+
+    test.cartList.forEach(async (item) => {
+      const itemRef = doc(db, "products", item.idItem);
+      await updateDoc(itemRef, {
+        stock: increment(-item.qtyItem),
+      });
+    });
+
+    let order = {
+      buyer: {
+        name: "Nombre Apellido",
+        email: "nombreusuario@correomail.com",
+        phone: "1100000000",
+      },
+      total: test.calcTotal(),
+      items: itemsForDB,
+      date: serverTimestamp(),
+    };
+
+    console.log(order);
+
+    const newFirestoreOrder = async () => {
+      const newOrderRef = doc(collection(db, "orders"));
+      await setDoc(newOrderRef, order);
+      return newOrderRef;
+    };
+
+    newFirestoreOrder()
+      .then((result) =>
+        alert(
+          "Hemos creado tu pedido. A continuación podrás visualizar tu número de transacción.\n\n\nOrder ID: " +
+            result.id +
+            "\n\n"
+        )
+      )
+      .catch((err) => console.log(err));
+
+    test.removeList();
+  };
 
   return (
     <div>
@@ -66,7 +124,9 @@ const Cart = () => {
                   <FormatNumber number={test.calcTotal()} />
                 </p>
               </div>
-              <button className="buy-button">Comprar Ahora</button>
+              <button className="buy-button" onClick={createOrder}>
+                Comprar Ahora
+              </button>
             </div>
           )}
         </div>

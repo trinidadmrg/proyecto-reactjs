@@ -45,6 +45,8 @@ const Cart = () => {
 
     console.log(order);
 
+    /* It creaters the order */
+
     const newFirestoreOrder = async () => {
       const newOrderRef = doc(collection(db, "orders"));
       await setDoc(newOrderRef, order);
@@ -63,7 +65,7 @@ const Cart = () => {
 
     test.removeList();
   };
-
+  /* It returns the cart if it's empty or if it has products*/
   return (
     <div>
       <h1 className="cart-title">Tu Carrito de Compras</h1>

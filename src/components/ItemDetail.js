@@ -14,6 +14,8 @@ const ItemDetail = ({ item }) => {
     test.addToCart(item, qty);
   };
 
+  /* It gives you the detail of the item */
+
   return (
     <>
       {item && item.picture ? (

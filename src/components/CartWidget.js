@@ -7,6 +7,7 @@ import img from "../img/cart.png";
 const CartWidget = () => {
   const test = useContext(CartContext);
 
+  /* Widget that counts the elements and leads to the cart. If there are no items then it's invisible*/
   return (
     <div className="cart-container">
       {test.cartList.length > 0 ? (

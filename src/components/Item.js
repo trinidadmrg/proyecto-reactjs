@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function Item({ id, title, price, picture, description }) {
+  /* It returns the item's information*/
   return (
     <div className="product-card">
       <p className="product-title">{title}</p>

@@ -3,6 +3,7 @@ import { useState } from "react";
 const ItemCount = ({ stock, initial, onAdd }) => {
   const [quantity, setQuantity] = useState(initial);
 
+  /* To increment the quantity of the product selected*/
   const increment = () => {
     if (quantity >= stock) {
       alert("Has alcanzado el límite de stock de este producto");
@@ -11,6 +12,7 @@ const ItemCount = ({ stock, initial, onAdd }) => {
     }
   };
 
+  /* To decrement the quantity of the product selected*/
   const decrement = () => {
     if (quantity <= initial) {
       alert("No tienes ningún producto en el carrito");
